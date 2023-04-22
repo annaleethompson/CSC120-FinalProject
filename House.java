@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class House extends Building{
 
   /**Store House ArrayList of residents and a boolean for whether the house has a dining room. */
-  private ArrayList<String> rooms;
+  private ArrayList<Room> rooms;
   
   /**Constructor */
   public House(String name, String address) {
     
     super(name, address);
-    this.rooms = new ArrayList<>();
+    this.rooms = new ArrayList<Room>();
   }
 
   /**Accessor for the number of rooms in the house
@@ -39,7 +39,7 @@ public class House extends Building{
     }
   }
 
-  public void addRoom(String room) {
+  public void addRoom(Room room) {
     this.rooms.add(room);
   }
 
@@ -52,7 +52,7 @@ public class House extends Building{
 
   public static void main(String[] args) {
     House myHouse = new House("Egg", "1 Chapin Way");
-    myHouse.addRoom("egg");
+    myHouse.addRoom();
     System.out.println(myHouse.toString());
   }
 
