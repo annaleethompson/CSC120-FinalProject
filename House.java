@@ -52,7 +52,7 @@ public class House extends Building{
 
   public static void main(String[] args) {
     House myHouse = new House("Egg", "1 Chapin Way");
-    myHouse.addRoom();
+    //myHouse.addRoom();
     System.out.println(myHouse.toString());
   }
 

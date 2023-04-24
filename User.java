@@ -1,38 +1,28 @@
+import java.util.ArrayList;
+
 public class User {
     /**Stores strings for the name and type of the bug, and integers for the x_positon, y_position, size, and energy. Also stores an ArrayList for all the items that the bug is holding.  */
-    String name;
-    String type;
-    ArrayList<String> items;
+    public ArrayList<String> items;
     int x_position;
     int y_position;
-    int size;
-    int energy;
+
 
     /**Constructor */ 
-    public Bug(String name, String type) {
-        this.name = name;
-        this.type = type;
+    public User() {
         this.items = new ArrayList<String>();
         this.x_position = 0;
         this.y_position = 0;
-        this.size = 1;
-        this.energy = 20;
     }
     
     /**Manipulator to grab an item by adding it to the items arraylist if the bug has enough energy and can hold another object. Reduces the bugs energy if it can grab the item. 
      * @param item item to be grabbed (item to be added to the items ArrayList)
      */
     public void grab(String item) {
-        if (this.energy <2) {
-            throw new RuntimeException("Sorry, " + this.name +" doesn't have enough energy to grab " + item);
-        }
         if (this.items.size() ==2) {
-            throw new RuntimeException("Sorry, " + this.name +" cannot hold any more items");
+            throw new RuntimeException("You cannot hold more than two items");
         }
-        if (this.energy >=2 && this.items.size() < 2){
+        if (this.items.size() < 2){
             items.add(item);
-            this.energy-=2;
-            System.out.println(this.name + " grabbed " + item);
         }
     }
 
@@ -41,14 +31,13 @@ public class User {
      */
     public String drop(String item) {
         if (this.items.size() ==0) {
-            throw new RuntimeException("Sorry, " + this.name +" isn't holding any items");
+            throw new RuntimeException("You arent holding any items");
         }
         if (!this.items.contains(item)) {
-            throw new RuntimeException("Sorry, " +this.name + " isn't holding " + item);
+            throw new RuntimeException("You aren't holding " + item);
         }
         else {
             this.items.remove(item);
-            System.out.println(this.name + " dropped " +item);
             return item;
         }
     }
@@ -57,154 +46,41 @@ public class User {
      * @param item item to be examined
      */
     public void examine(String item) {
-        if (this.energy <1) {
-            throw new RuntimeException("Sorry, " + this.name +" doesn't have enough energy to examine " + item);
-        }
-        if (this.energy >=1) {
-            System.out.println("...Currently examining "+item+"...");
-            this.energy -=1;
-            System.out.println(this.name +" succesfully examined "+item);
-        }
+        grab(item);
+        //Get clue
+        drop(item);
+    }
+    
+    public void inventory() {
+        System.out.println("Current inventory:");
+        System.out.println(this.items.toString()
+                            .replace("[","")
+                            .replace("]","")
+                            .replace(", ", "\n"));
+
     }
 
-    /**Function that uses an item if the bug has enough energy. If the bug is already holding the item it will automatically use the item otherwise it will grab() the item, use it, and then drop() it.
-     * @param item item to be "used"
-     */
-    public void use(String item) {
-        if (this.energy <5) {
-            throw new RuntimeException("Sorry, " + this.name +" doesn't have enough energy to use " + item);
-        }
-        if (this.energy >=5 && !this.items.contains(item)) {
-            this.grab(item);
-            this.energy-=3;
-            System.out.println("...Currently using "+item+"...");
-            this.drop(item);
-            System.out.println(this.name +" succesfully used "+item);
-        }
-        if (this.energy>=5 && this.items.contains(item)) {
-            this.energy-=3;
-            System.out.println("...Currently using "+item+"...");
-            System.out.println(this.name +" succesfully used "+item);
-        }
+    //public void goWest() {
+
+    //}
+
+    //public void goEast() {
+        
+    //}
+
+    //public void goNorth() {
+
+    //}
+
+    //public void goSouth() {
+
+    //}
+
+    public static void main(String[] args) {
+        User myHouse = new User();
+        myHouse.grab("pen");
+        myHouse.grab("pencil");
+        myHouse.inventory();
     }
 
-    /**Manipulator that walks the bug 10 inches in a specified direction if the bug has enough energy and a valid direction was entered. 
-     * @param direction the direction that the bug is to walk in (North, East, South, or West)
-     * @return boolean describing whether the bug was able to walk.
-     */
-    public boolean walk(String direction) {
-        if (this.energy <5) {
-            throw new RuntimeException("Sorry, " + this.name +" doesn't have enough energy to walk");
-        }
-        if (direction!= "North" && direction!="South" && direction!="East" && direction!="West") {
-            throw new RuntimeException("Not a valid direction");
-        }
-        if (this.energy >=5) {
-            if (direction=="North") {
-                System.out.println("...Currently Walking...");
-                this.y_position+=10; 
-                this.energy -=5;
-                System.out.println(this.name + " walked 10 inches " + direction);
-                return true;
-            }
-            if (direction == "South") {
-                System.out.println("...Currently Walking...");
-                this.y_position-=10; 
-                this.energy -=5;
-                System.out.println(this.name + " walked 10 inches " + direction);
-                return true;
-            }
-            if (direction == "East") {
-                System.out.println("...Currently Walking...");
-                this.x_position+=10;
-                this.energy -=5; 
-                System.out.println(this.name + " walked 10 inches " + direction);
-                return true;
-            }
-            if (direction == "West") {
-                System.out.println("...Currently Walking...");
-                this.y_position-=10;
-                this.energy -=5; 
-                System.out.println(this.name + " walked 10 inches " + direction);
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    }
-
-    /**Manipulator that flys the Bug in the specified x and y directions if it has enough energy. Reduces the bugs energy if it can fly.
-     * @param x the number of distance units the bug wants to fly in the x (East/West) direction
-     * @param y the number of distance units the bug wants to fly in the y (North/South) direction.
-     * @return boolean describing whether the bug was able to fly.
-     */
-    public boolean fly(int x, int y) {
-        if (this.energy <10) {
-            throw new RuntimeException("Sorry, " + this.name +" doesn't have enough energy to fly");
-        }
-        if (this.energy >=10) {
-            System.out.println("...Currently Flying...");
-            this.x_position +=x;
-            this.y_position+=y;
-            this.energy-=10; 
-            System.out.println("Flight Complete!");
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    /**Manipulator that will decrease the size of the bug if it is already not the smallest size possible.
-     * @return number describing the bugs size (1-10).
-     */
-    public Number shrink() {
-        if (this.size ==1) {
-            throw new RuntimeException(this.name + " cannot shrink anymore!");
-        }
-        else {
-            this.size -=1;
-            System.out.println(this.name + " shrunk to size "+ this.size);
-        }
-        return this.size;
-    }
-
-    /**Manipulator that will increase the size of the bug if it is not at the max size and has enough energy to grow. Decreases the bug's energy if it can grow. 
-     *@return number describing the bugs size (1-10).
-     */
-    public Number grow() {
-        if (this.size ==10) {
-            throw new RuntimeException(this.name +" cannot grow anymore!");
-        }
-        if (this.energy < 30) {
-            throw new RuntimeException("Sorry, " + this.name +" does not have enough energy to grow");
-        }
-        if (this.energy >= 30) {
-            this.energy -=30;
-            this.size +=1;
-            System.out.println(this.name + " grew to size " + this.size);
-        }
-        return this.size;
-    }
-
-    /**Manipulator that will increase the bugs energy by ten and will call on the grow function if the energy reaches a certain level (50) */
-    public void rest() {
-        this.energy+=10;
-        if (this.energy == 50 || this.energy >50) {
-            this.grow();
-        }
-    }
-
-    /**Manipulator that will undo all of the Bug's actions by resetting all of the Bugs parameters */
-    public void undo() {
-        this.items.clear();
-        this.x_position=0;
-        this.y_position=0;
-        this.size = 1;
-        this.energy = 20;
-    }
 }

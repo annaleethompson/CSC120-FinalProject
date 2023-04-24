@@ -27,7 +27,7 @@ public class Room {
      * Removes a passenger from a car and throws a RunTimeException if the passenger isn't in the car or if there are no passengers on the car.
      * @param p the passenger to be removed
      */
-    public void removePassenger(String p) {
+    public void exitRoom(String p) {
         this.residents.remove(p);
     } 
     
