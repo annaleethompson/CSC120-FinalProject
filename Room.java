@@ -19,8 +19,8 @@ public class Room {
      * Adds a passenger to a car and throws a RunTimeException if the passenger is on the car already or if the car is at maximum capacity.
      * @param p the passenger to be added
      */
-    public void enterRoom (String p) {
-        this.residents.add(p);
+    public void enterRoom () {
+        
     }
 
     /**

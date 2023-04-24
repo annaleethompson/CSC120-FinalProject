@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class Conversation {
     
-    public static boolean won;
+    public static boolean won = false;
     public static String response;
 
     public static void main(String[] arguments) {
-        User user = new User();
+        //User user = new User();
         System.out.println("Clue: A Murder Mystery");
-        System.out.println("You enter the house to find yourself in an entryway. North of you there is a table with an envelope.");
-        while (won=true) {
+        System.out.println("You find yourself in a room at the center of a house. There is a table with an envelope.");
+        while (won = false) {
             Scanner scanner = new Scanner(System.in);
             response = scanner.nextLine();
             String[] split = response.split(" ");
@@ -17,13 +17,19 @@ public class Conversation {
                 if (element.equals("Pick") || element.equals("pick")){
                 }
                 if (element.equals("Open") || element.equals("open")){
+                    System.out.println("You pick up the envelope");
                 }
                 if (element.equals("West") || element.equals("west")){
+                    try {
+                        User.goWest();
+                    }catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 if (element.equals("East") || element.equals("east")){
                 }
                 if (element.equals("North") || element.equals("north")){
-                    User.goNorth();
+                
                 }
                 if (element.equals("South") || element.equals("south")){
                 }

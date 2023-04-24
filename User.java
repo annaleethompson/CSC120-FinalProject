@@ -3,15 +3,13 @@ import java.util.ArrayList;
 public class User {
     /**Stores strings for the name and type of the bug, and integers for the x_positon, y_position, size, and energy. Also stores an ArrayList for all the items that the bug is holding.  */
     public ArrayList<String> items;
-    int x_position;
-    int y_position;
+    static int x_position=0;
+    static int y_position=0;
 
 
     /**Constructor */ 
     public User() {
         this.items = new ArrayList<String>();
-        this.x_position = 0;
-        this.y_position = 0;
     }
     
     /**Manipulator to grab an item by adding it to the items arraylist if the bug has enough energy and can hold another object. Reduces the bugs energy if it can grab the item. 
@@ -60,19 +58,30 @@ public class User {
 
     }
 
-    //public void goWest() {
+    public static void goWest() {
+        if (y_position == 2 || y_position ==-2 || x_position ==-2) {
+            throw new RuntimeException("There is no door or hallway to your west.");
+        }
+        else {
+            x_position-=1;
+            try {
+                Map.enterRoom(x_position, y_position);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                x_position+=1;
+            }
+        }
+    }
 
-    //}
-
-    //public void goEast() {
+    //public static void goEast() {
         
     //}
 
-    //public void goNorth() {
+    //public static void goNorth() {
 
     //}
 
-    //public void goSouth() {
+    //public static void goSouth() {
 
     //}
 
