@@ -4,15 +4,15 @@ public class Room {
     
     public String name;
     public int x_position;
-    public int y_positon;
+    public int y_position;
     public ArrayList<String> residents;
     public ArrayList<String> items;
 
     public Room(String name, int x_position, int y_positon) {
         this.name = name;
         this.x_position = x_position; 
-        this.y_positon = y_positon;
-        this.residents = new ArrayList<String>();
+        this.y_position = y_positon;
+        //this.residents = new ArrayList<String>();
         this.items = new ArrayList<String>();
     }
     /**
@@ -21,6 +21,42 @@ public class Room {
      */
     public void enterRoom () {
         
+        if (x_position ==-2 && y_position == 0) {
+            //theatre.enterRoom();
+            System.out.println("You are now in the theatre.");
+        }
+        if (x_position == 0 && y_position == 0) {
+            //clue.enterRoom();
+            System.out.println("You are now in the clue room.");
+        }
+        if (x_position == 2 && y_position == 0) {
+            //dining.enterRoom();
+            System.out.println("You are now in the dining room.");
+        }
+        if (x_position ==-2 && y_position == 2) {
+            //library.enterRoom(); 
+            System.out.println("You are now in the library.");
+        }
+        if (x_position ==0 && y_position == 2) {
+            //lounge.enterRoom();
+            System.out.println("You are now in the lounge.");
+        }
+        if (x_position ==2 && y_position == 2) {
+            //kitchen.enterRoom();
+            System.out.println("You are now in the kitchen.");
+        }
+        if (x_position ==-2 && y_position == -2) {
+            //study.enterRoom();
+            System.out.println("You are now in the study.");
+        }
+        if (x_position ==0 && y_position == -2) {
+            //hall.enterRoom();
+            System.out.println("You are now in the hall.");
+        }
+        if (x_position ==2 && y_position == -2) {
+            //conservatory.enterRoom();
+            System.out.println("You are now in the conservatory.");
+        }
     }
 
     /**
@@ -28,7 +64,7 @@ public class Room {
      * @param p the passenger to be removed
      */
     public void exitRoom(String p) {
-        this.residents.remove(p);
+        //this.residents.remove(p);
     } 
     
 

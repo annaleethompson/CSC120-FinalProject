@@ -73,17 +73,50 @@ public class User {
         }
     }
 
-    //public static void goEast() {
-        
-    //}
+    public static void goEast() {
+        if (y_position == 2 || y_position ==-2 || x_position ==2) {
+            throw new RuntimeException("There is no door or hallway to your east.");
+        }
+        else {
+            x_position+=1;
+            try {
+                Map.enterRoom(x_position, y_position);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                x_position-=1;
+            }
+        }
+    }
 
-    //public static void goNorth() {
+    public static void goNorth() {
+        if (y_position == 2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0)) {
+            throw new RuntimeException("There is no door or hallway to your north.");
+        }
+        else {
+            y_position+=1;
+            try {
+                Map.enterRoom(x_position, y_position);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                x_position-=1;
+            }
+        }
+    }
 
-    //}
-
-    //public static void goSouth() {
-
-    //}
+    public static void goSouth() {
+        if (y_position == -2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0)) {
+            throw new RuntimeException("There is no door or hallway to your north.");
+        }
+        else {
+            y_position-=1;
+            try {
+                Map.enterRoom(x_position, y_position);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                x_position+=1;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         User myHouse = new User();

@@ -2,40 +2,95 @@ import java.util.Scanner;
 
 public class Conversation {
     
-    public static boolean won = false;
+    public static boolean won;
     public static String response;
 
     public static void main(String[] arguments) {
         //User user = new User();
         System.out.println("Clue: A Murder Mystery");
         System.out.println("You find yourself in a room at the center of a house. There is a table with an envelope.");
-        while (won = false) {
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        while (won = true) {
             response = scanner.nextLine();
-            String[] split = response.split(" ");
-            for (String element : split) {
-                if (element.equals("Pick") || element.equals("pick")){
-                }
-                if (element.equals("Open") || element.equals("open")){
-                    System.out.println("You pick up the envelope");
-                }
-                if (element.equals("West") || element.equals("west")){
-                    try {
-                        User.goWest();
-                    }catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-                if (element.equals("East") || element.equals("east")){
-                }
-                if (element.equals("North") || element.equals("north")){
-                
-                }
-                if (element.equals("South") || element.equals("south")){
+            if (response.contains("Pick") || response.contains("pick")) {
+
+            }
+            else if (response.contains("Open") || response.contains("open")) {
+
+            }
+            else if (response.contains("West") || response.contains("west")) {
+                try {
+                    User.goWest();
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
             }
-            scanner.close();
+            else if (response.contains("East") || response.contains("east")) {
+                try {
+                    User.goEast();
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            else if (response.contains("North") || response.contains("north")) {
+                try {
+                    User.goNorth();
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            else if (response.contains("South") || response.contains("south")) {
+                try {
+                    User.goSouth();
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            else {
+                System.out.println("I don't know what this means.");
+            }
         }
+        scanner.close();
     }
 
 }
+
+
+// String[] split = response.split(" ");
+//             for (String element : split) {
+//                 if (element.equals("Pick") || element.equals("pick")){
+//                 }
+//                 else if (element.equals("Open") || element.equals("open")){
+//                 }
+//                 else if (element.equals("West") || element.equals("west")){
+//                     try {
+//                         User.goWest();
+//                     }catch (Exception e) {
+//                         System.out.println(e.getMessage());
+//                     }
+//                 }
+//                 else if (element.equals("East") || element.equals("east")){
+//                     try {
+//                         User.goEast();
+//                     }catch (Exception e) {
+//                         System.out.println(e.getMessage());
+//                     }
+//                 }
+//                 else if (element.equals("North") || element.equals("north")){
+//                     try {
+//                         User.goNorth();
+//                     }catch (Exception e) {
+//                         System.out.println(e.getMessage());
+//                     }
+//                 }
+//                 else if (element.equals("South") || element.equals("south")){
+//                     try {
+//                         User.goSouth();
+//                     }catch (Exception e) {
+//                         System.out.println(e.getMessage());
+//                     }
+//                 }
+//                 else {
+//                     System.out.println("I don't know what this means.");
+//                 }
+//             }
