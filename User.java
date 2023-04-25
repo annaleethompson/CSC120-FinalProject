@@ -89,7 +89,7 @@ public class User {
     }
 
     public static void goNorth() {
-        if (y_position == 2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0)) {
+        if (y_position == 2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0)|| (x_position==-2 && y_position==-1) || (x_position==2 && y_position==-1)) {
             throw new RuntimeException("There is no door or hallway to your north.");
         }
         else {
@@ -104,8 +104,8 @@ public class User {
     }
 
     public static void goSouth() {
-        if (y_position == -2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0)) {
-            throw new RuntimeException("There is no door or hallway to your north.");
+        if (y_position == -2 || (x_position ==-2 && y_position ==0) || (x_position ==2 && y_position ==0) || (x_position==2 && y_position==1) || (x_position==-2 && y_position==1)) {
+            throw new RuntimeException("There is no door or hallway to your south.");
         }
         else {
             y_position-=1;
