@@ -46,6 +46,34 @@ public class Conversation {
                     System.out.println(e.getMessage());
                 }
             }
+            else if (response.contains("Watch") || response.contains("watch")) {
+                try {
+                    User.watch();
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            else if (response.contains("Talk") || response.contains("talk")) {
+              try {
+                    User.talk(response);
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            else if (response.contains("Ask") || response.contains("ask")) {
+                try {
+                      User.ask(response);
+                }catch (Exception e) {
+                      System.out.println(e.getMessage());
+                }
+            }
+            else if (response.contains("Eat") || response.contains("eat")) {
+                try {
+                      User.eat(response);
+                }catch (Exception e) {
+                      System.out.println(e.getMessage());
+                }
+            }
             else {
                 System.out.println("I don't know what this means.");
             }

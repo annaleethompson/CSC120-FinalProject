@@ -7,7 +7,7 @@ public class Room {
     public int y_position;
     public ArrayList<String> residents;
     public ArrayList<String> items;
-
+    
     public Room(String name, int x_position, int y_positon) {
         this.name = name;
         this.x_position = x_position; 
@@ -20,10 +20,11 @@ public class Room {
      * @param p the passenger to be added
      */
     public void enterRoom () {
-        
+    
         if (x_position ==-2 && y_position == 0) {
             //theatre.enterRoom();
             System.out.println("You are now in the theatre.");
+            System.out.println("Mrs. White is sitting and watching a movie by herself.");
         }
         if (x_position == 0 && y_position == 0) {
             //clue.enterRoom();
@@ -36,6 +37,7 @@ public class Room {
         if (x_position ==-2 && y_position == 2) {
             //library.enterRoom(); 
             System.out.println("You are now in the library.");
+            System.out.println("Sitting on a couch to your left is Scarlet who is reading Turn of the Screw by Henry James. The room is lit by a fire going in the fireplace and a candlestick on a sidetable near Scarlet.");
         }
         if (x_position ==0 && y_position == 2) {
             //lounge.enterRoom();
@@ -44,6 +46,7 @@ public class Room {
         if (x_position ==2 && y_position == 2) {
             //kitchen.enterRoom();
             System.out.println("You are now in the kitchen.");
+            System.out.println("Colonel Mustard is on the far right corner plating a dish that he just made called Vadacurry. He is chopping up some thyme to use as a garnish before he notices you enter. ");
         }
         if (x_position ==-2 && y_position == -2) {
             //study.enterRoom();

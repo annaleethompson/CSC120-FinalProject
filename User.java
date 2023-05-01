@@ -118,6 +118,96 @@ public class User {
         }
     }
 
+    public static void watch() {
+        if (x_position ==-2 && y_position == 0) {
+            System.out.println("You sit down next to Mrs. White and watch some of the film. It is a murder mystery where ___");
+        }
+        else {
+            throw new RuntimeException("There is nothing to watch in this room");
+        }
+    }
+
+    public static void talk(String response) {
+        if (response.contains("Peacock") || response.contains("peacock")) {
+            if (x_position ==2 && y_position == -2) {
+
+            } else {
+                System.out.println("Mrs.Peacock isn't in this room");
+            }
+        }
+        else if (response.contains("Plum") || response.contains("plum")) {
+            if (x_position == 2 && y_position == 0) {
+
+            } else {
+                System.out.println("Professor Plum isn't in this room");
+            }
+        }
+        else if (response.contains("White") || response.contains("white")) {
+            if (x_position ==-2 && y_position == 0) {
+                System.out.println("\nYou greet Ms.White and ask her if you know anything about the murder. She says that she came from the lounge earlier and has been watching films in the theatre since then. However, she did note that she saw Mr.Green headed west in the northern hallway and later on saw Scarlet go north past the theatre. Towards the end of the conversation you notice that her hand is bandaged which you hadn't seen because she was holding her hands behind her back.\n");
+            } else {
+                throw new RuntimeException("Ms.White isn't in this room");
+            }
+        }
+        else if (response.contains("Mustard") || response.contains("mustard")) {
+            if (x_position ==2 && y_position == 2) {
+                System.out.println("\nYou interupt Mustard from his cooking and inquire if he has noticed anything odd lateley. He says that earlier he went to the conservatory to get some thyme for his dish and saw Scarlet in the eastern hallway swiftly heading north with a candlestick. At the conservatory, he claims to have talked with Peacock for a little and then fixed a broken pipe used to water the plants using a wrench there. After getting the thyme he says he came back to the kitchen and has been cooking since then.\n");
+            } else {
+                System.out.println("Colonel Mustard isn't in this room");
+            }
+        }
+        else if (response.contains("Green") || response.contains("green")) {
+            if (x_position ==0 && y_position == -2) {
+
+            } else {
+                System.out.println("Mr.Green isn't in this room");
+            }
+        }
+        else if (response.contains("Scarlet") || response.contains("scarlet")) {
+            if (x_position ==-2 && y_position == 2) {
+            System.out.println("\nScarlet says hi to you and starts explaining how she has been really scared ever since the murder occured. She says she saw a pistol in the study and immediately left because she'd never seen one in there before. Afterwards, she came to the library because she thought reading would help calm her down.\n");
+            } else {
+                System.out.println("Scarlet isn't in this room");
+            }
+        }
+        else {
+            System.out.println("Talk to whom?");
+        }
+    }
+
+    public static void ask(String response) {
+        if ((response.contains("Lead pipe") || response.contains("lead pipe")) && (response.contains("Lounge") || response.contains("lounge"))) {
+            if  (x_position ==-2 && y_position == 0) {
+                System.out.println("\nMs.White says she dosn't recall seeing a lead pipe in the lounge when she left\n");
+            } else {
+                throw new RuntimeException("Ms.White isn't in this room");
+            }
+        }
+        else if ((response.contains("White") || response.contains("white")) && (response.contains("Theatre") || response.contains("theatre"))) {
+            if (x_position ==-2 && y_position == 2) {
+                System.out.println("\nScarlet says that she remembers seeing Ms. White is the theatre.");
+            } else {
+                throw new RuntimeException("Scarlet isn't in this room");
+            }
+        }
+        else if ((response.contains("Plum") || response.contains("plum")) && (response.contains("Dining room") || response.contains("dining room"))) {
+            if (x_position == 2 && y_position == 2) {
+                System.out.println("\nMustard saw Professor Plum in the dining room on the way back to the kitchen");
+            } else {
+                throw new RuntimeException("Colonel Mustart isn't in this room");
+            }
+        }
+        else {
+            System.out.println("Ask what?");
+        }
+    }
+
+    public static void eat(String response) {
+        if (x_position ==2 && y_position == 2) {
+            System.out.println("Mustart gives you a plate of the dish he just made and you sit down to eat for a bit. ");
+        }
+    }
+
     public static void main(String[] args) {
         User myHouse = new User();
         myHouse.grab("pen");
