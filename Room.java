@@ -68,7 +68,7 @@ public class Room {
      */
     public void exitRoom(String p) {
         //this.residents.remove(p);
-        //3rff
+        //3rffh
     } 
     
 
