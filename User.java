@@ -213,6 +213,7 @@ public class User {
         myHouse.grab("pen");
         myHouse.grab("pencil");
         myHouse.inventory();
+        //reg
     }
 
 }
