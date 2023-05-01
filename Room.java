@@ -33,6 +33,7 @@ public class Room {
         if (x_position == 2 && y_position == 0) {
             //dining.enterRoom();
             System.out.println("You are now in the dining room.");
+            System.out.println("Professor Plum is sitting at the dining room table eating a meal by himself.");
         }
         if (x_position ==-2 && y_position == 2) {
             //library.enterRoom(); 
