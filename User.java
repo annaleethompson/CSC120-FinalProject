@@ -120,7 +120,7 @@ public class User {
 
     public static void watch() {
         if (x_position ==-2 && y_position == 0) {
-            System.out.println("You sit down next to Mrs. White and watch some of the film. It is a murder mystery where ___");
+            System.out.println("You sit down next to Mrs. White and watch some of the film. The movie is Vertigo, a Hitchcock film. ");
         }
         else {
             throw new RuntimeException("There is nothing to watch in this room");
@@ -137,7 +137,7 @@ public class User {
         }
         else if (response.contains("Plum") || response.contains("plum")) {
             if (x_position == 2 && y_position == 0) {
-
+                System.out.println("Professor Plum waves to you, offers you food, and asks how you are doing with everything going on. You explain that you are trying to solve the crime and he begins telling his account of what happened. He says that he went to the conservatory earlier to drop something off and then came back to the dining room. While I've been here I saw Mustard pass by carrying a knife and said he was using it to cut some herbs because he couldn't find scissors.");
             } else {
                 System.out.println("Professor Plum isn't in this room");
             }
@@ -194,7 +194,21 @@ public class User {
             if (x_position == 2 && y_position == 2) {
                 System.out.println("\nMustard saw Professor Plum in the dining room on the way back to the kitchen");
             } else {
-                throw new RuntimeException("Colonel Mustart isn't in this room");
+                throw new RuntimeException("Colonel Mustard isn't in this room");
+            }
+        }
+        else if ((response.contains("Plum") || response.contains("plum")) && (response.contains("Conservatory") || response.contains("conservatory"))) {
+            if (x_position == 2 && y_position == -2) {
+                System.out.println("\nPeacock says that Professor Plum did pop into the conservatory for a minute to bring a wrench to fix the broken pipe. ");
+            } else {
+                throw new RuntimeException("Peacock isn't in this room");
+            }
+        }
+        else if ((response.contains("Green") || response.contains("green")) && (response.contains("Dining room") || response.contains("dining room"))) {
+            if (x_position == 2 && y_position == 0) {
+                System.out.println("\nProfessor Plum says that he does recall seeing Mr. Green headed south past the dining room.");
+            } else {
+                throw new RuntimeException("Professor Plum isn't in this room");
             }
         }
         else {
@@ -204,7 +218,10 @@ public class User {
 
     public static void eat(String response) {
         if (x_position ==2 && y_position == 2) {
-            System.out.println("Mustart gives you a plate of the dish he just made and you sit down to eat for a bit. ");
+            System.out.println("Mustard gives you a plate of the dish he just made and you sit down to eat for a bit. ");
+        }
+        if (x_position ==2 && y_position == 0) {
+            System.out.println("Professor Plum serves you a plate of __ and you eat with him. He tells you that he lost his favorite bookmark somewhere and doesn't know where it could have gone.  ");
         }
     }
 
